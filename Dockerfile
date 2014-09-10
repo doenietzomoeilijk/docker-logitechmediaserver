@@ -15,9 +15,6 @@ RUN apt-get -y install supervisor wget git
 RUN wget -O /tmp/logitechmediaserver_7.8.0_all.deb http://downloads.slimdevices.com/LogitechMediaServer_v7.8.0/logitechmediaserver_7.8.0_all.deb
 RUN dpkg -i /tmp/logitechmediaserver_7.8.0_all.deb
 
-# create directory for music - can be mapped using docker -v
-RUN mkdir /media
-
 # Configure supervisor to run logitechmediaserver
 ADD files/supervisord.conf /etc/supervisor/supervisord.conf
 ADD files/squeezeserver.conf /etc/supervisor/conf.d/squeezeserver.conf
