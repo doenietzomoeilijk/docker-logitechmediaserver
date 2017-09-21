@@ -1,19 +1,19 @@
 
-# Logitechmediaserver 7.8.0
+# Logitechmediaserver 7.9.1
 # 
 #
 FROM ubuntu:14.04
 MAINTAINER Tom Deckers <tom@ducbase.com>
 
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get -y install supervisor wget git 
+RUN apt-get -y update \
+    && apt-get -y upgrade \
+    && apt-get -y install supervisor wget git libio-socket-ssl-perl flac
 
 # Install logitechmediaserver
 #############################
-
-RUN wget -O /tmp/logitechmediaserver_7.8.0_all.deb http://downloads.slimdevices.com/LogitechMediaServer_v7.8.0/logitechmediaserver_7.8.0_all.deb
-RUN dpkg -i /tmp/logitechmediaserver_7.8.0_all.deb
+RUN wget -O /tmp/logitechmediaserver_all.deb \
+    $(wget -q -O - "http://www.mysqueezebox.com/update/?version=7.9.1&revision=1&geturl=1&os=deb") \
+    && dpkg -i /tmp/logitechmediaserver_all.deb
 
 # Add pipework to wait for network if needed
 ADD files/pipework /usr/local/bin/pipework

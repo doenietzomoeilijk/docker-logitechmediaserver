@@ -1,7 +1,7 @@
 Overview
 ========
 
-Docker image for Logitechmediaserver (7.8.0).
+Docker image for Logitechmediaserver (7.9.1).
 
 Building
 ========
